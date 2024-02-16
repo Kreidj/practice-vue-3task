@@ -1,5 +1,5 @@
 body {
-    font-family: Arial, sans-serif;
+    font-family: "Comic Sans MS", sans-serif;
     margin: 0;
     padding: 0;
     background-color: #000;
@@ -16,7 +16,7 @@ body {
 .column, .addForm {
     flex: 1;
     margin-right: 1rem;
-    background-color: white;
+    background-color: #77610a;
     padding: 1rem;
     border-radius: 5px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
@@ -25,7 +25,7 @@ body {
 .column h2, .addForm h2 {
     font-size: 1.5rem;
     margin-bottom: 1rem;
-    color: #333;
+    color: #ffffff;
 }
 
 form {
@@ -36,7 +36,7 @@ form {
 label {
     margin-top: 1rem;
     font-weight: bold;
-    color: #333;
+    color: #ffffff;
 }
 
 input, textarea, select {
