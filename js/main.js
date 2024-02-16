@@ -65,6 +65,10 @@ new Vue({
             const taskToMove = this.plannedTasks.splice(taskIndex, 1)[0];
             this.progressTasks.push(taskToMove);
         },
+        moveToTesting(taskIndex) {
+            const taskToMove = this.progressTasks.splice(taskIndex, 1)[0];
+            this.testingTasks.push(taskToMove);
+        },
 
     }
 })
