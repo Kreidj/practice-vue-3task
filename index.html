@@ -28,9 +28,9 @@
         <h2>Planned Tasks</h2>
         <div v-for="(task, index) in plannedTasks" :key="index">
             <div v-if="editedTaskIndex !== index || editedColumn !== 'plannedTasks'">
+                <p>Created At: {{ task.createdAt }}</p>
                 <h3>{{ task.title }}</h3>
                 <p>{{ task.description }}</p>
-                <p>Created At: {{ task.createdAt }}</p>
                 <p>Deadline: {{ task.deadline }}</p>
                 <p>Last Change: {{ task.lastChange }}</p>
                 <button class="edit-button" @click="startEditing(index, 'plannedTasks')">Edit</button>
@@ -54,9 +54,9 @@
         <h2>Tasks in Progress</h2>
         <div v-for="(task, index) in progressTasks" :key="index">
             <div v-if="editedTaskIndex !== index || editedColumn !== 'progressTasks'">
+                <p>Created At: {{ task.createdAt }}</p>
                 <h3>{{ task.title }}</h3>
                 <p>{{ task.description }}</p>
-                <p>Created At: {{ task.createdAt }}</p>
                 <p>Deadline: {{ task.deadline }}</p>
                 <p>Last Change: {{ task.lastChange }}</p>
                 <button class="edit-button" @click="startEditing(index, 'progressTasks')">Edit</button>
@@ -79,9 +79,9 @@
         <h2>Testing</h2>
         <div v-for="(task, index) in testingTasks" :key="index">
             <div v-if="editedTaskIndex !== index || editedColumn !== 'testingTasks'">
+                <p>Created At: {{ task.createdAt }}</p>
                 <h3>{{ task.title }}</h3>
                 <p>{{ task.description }}</p>
-                <p>Created At: {{ task.createdAt }}</p>
                 <p>Deadline: {{ task.deadline }}</p>
                 <p>Last Change: {{ task.lastChange }}</p>
                 <button class="edit-button" @click="startEditing(index, 'testingTasks')">Edit</button>
@@ -101,6 +101,20 @@
                     <input id="editDeadline" type="date" v-model="editedTask.deadline">
                     <button type="submit">Save</button>
                 </form>
+            </div>
+        </div>
+    </div>
+    <div class="column">
+        <h2>Completed Tasks</h2>
+        <div v-for="(task, index) in completedTasks" :key="index">
+            <div v-if="editedTaskIndex !== index || editedColumn !== 'completedTasks'">
+                <h3>{{ task.title }}</h3>
+                <p>{{ task.description }}</p>
+                <p>Created At: {{ task.createdAt }}</p>
+                <p>Deadline: {{ task.deadline }}</p>
+                <p>Last Change: {{ task.lastChange }}</p>
+                <p class="overdueDeadline" v-if="task.isOverdue">Task overdue</p>
+                <p class="completedDeadline" v-else>Task completed on time</p>
             </div>
         </div>
     </div>
