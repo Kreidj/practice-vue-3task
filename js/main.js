@@ -20,6 +20,12 @@ new Vue({
             editedColumn: null,
         }
     },
+    created() {
+        this.loadDataFromLocalStorage();
+    },
+    updated() {
+        this.saveDataToLocalStorage();
+    },
     methods: {
         addTask() {
             if (!this.newTask.title) {
@@ -81,6 +87,24 @@ new Vue({
             const taskToMove = this.testingTasks.splice(taskIndex, 1)[0];
             taskToMove.isOverdue = new Date(taskToMove.deadline) < new Date();
             this.completedTasks.push(taskToMove);
-        }
+        },
+        loadDataFromLocalStorage() {
+            const storedData = JSON.parse(localStorage.getItem('taskData'));
+            if (storedData) {
+                this.plannedTasks = storedData.plannedTasks;
+                this.progressTasks = storedData.progressTasks;
+                this.testingTasks = storedData.testingTasks;
+                this.completedTasks = storedData.completedTasks;
+            }
+        },
+        saveDataToLocalStorage() {
+            const dataToStore = {
+                plannedTasks: this.plannedTasks,
+                progressTasks: this.progressTasks,
+                testingTasks: this.testingTasks,
+                completedTasks: this.completedTasks
+            };
+            localStorage.setItem('taskData', JSON.stringify(dataToStore));
+        },
     }
 })

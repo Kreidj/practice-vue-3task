@@ -113,8 +113,8 @@
                 <p>Created At: {{ task.createdAt }}</p>
                 <p>Deadline: {{ task.deadline }}</p>
                 <p>Last Change: {{ task.lastChange }}</p>
-                <p class="overdueDeadline" v-if="task.isOverdue">Task overdue</p>
-                <p class="completedDeadline" v-else>Task completed on time</p>
+                <p class="overdueDeadline" v-if="task.isOverdue">Task overdue :(</p>
+                <p class="completedDeadline" v-else>Task completed on time!</p>
             </div>
         </div>
     </div>
