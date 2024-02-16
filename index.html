@@ -14,63 +14,92 @@
 <div id="app">
     <div class="addForm">
         <form @submit.prevent="addTask">
-            <h2>Cоздание задачи</h2>
-            <label for="title">Название задачи:</label>
+            <h2>Create Task</h2>
+            <label for="title">Task Title:</label>
             <input id="title" type="text" v-model="newTask.title">
-            <label for="description">Описание:</label>
+            <label for="description">Description:</label>
             <textarea id="description" v-model="newTask.description"></textarea>
-            <label for="deadline">Дэдлайн:</label>
+            <label for="deadline">Deadline:</label>
             <input id="deadline" type="date" v-model="newTask.deadline">
-            <button type="submit">Добавить задачу</button>
+            <button type="submit">Add Task</button>
         </form>
     </div>
     <div class="column">
-        <h2>Запланированные задачи</h2>
+        <h2>Planned Tasks</h2>
         <div v-for="(task, index) in plannedTasks" :key="index">
             <div v-if="editedTaskIndex !== index || editedColumn !== 'plannedTasks'">
                 <h3>{{ task.title }}</h3>
                 <p>{{ task.description }}</p>
-                <p>Дата создания: {{ task.createdAt }}</p>
-                <p>Дэдлайн: {{ task.deadline }}</p>
-                <p>Последнее редактирование: {{ task.lastChange }}</p>
-                <button class="edit-button" @click="startEditing(index, 'plannedTasks')">Редактировать</button>
+                <p>Created At: {{ task.createdAt }}</p>
+                <p>Deadline: {{ task.deadline }}</p>
+                <p>Last Change: {{ task.lastChange }}</p>
+                <button class="edit-button" @click="startEditing(index, 'plannedTasks')">Edit</button>
             </div>
             <div v-else>
                 <form @submit.prevent="finishEditing(index)">
-                    <label for="editTitle">Заголовок задачи:</label>
-                    <input id="editTitle" type="text" v-model="editedTask.title">
-                    <label for="editDescription">Описание задачи:</label>
-                    <textarea id="editDescription" v-model="editedTask.description"></textarea>
-                    <label for="editDeadline">Дэдлайн:</label>
-                    <input id="editDeadline" type="date" v-model="editedTask.deadline">
-                    <button type="submit">Сохранить</button>
+                    <label for="editTitle">Task Title:</label>
+                    <input id="editTitle1" type="text" v-model="editedTask.title">
+                    <label for="editDescription">Task Description:</label>
+                    <textarea id="editDescription1" v-model="editedTask.description"></textarea>
+                    <label for="editDeadline">Deadline:</label>
+                    <input id="editDeadline1" type="date" v-model="editedTask.deadline">
+                    <button type="submit">Save</button>
                 </form>
             </div>
-            <button class="delete-button" @click="deleteTask(index)">Удалить</button>
-            <button class="move-button" @click="moveToInProgress(index)">Переместить в работу</button>
+            <button class="delete-button" @click="deleteTask(index)">Delete</button>
+            <button class="move-button" @click="moveToInProgress(index)">Move to In Progress</button>
         </div>
     </div>
     <div class="column">
-        <h2>Задачи в работе</h2>
+        <h2>Tasks in Progress</h2>
         <div v-for="(task, index) in progressTasks" :key="index">
             <div v-if="editedTaskIndex !== index || editedColumn !== 'progressTasks'">
                 <h3>{{ task.title }}</h3>
                 <p>{{ task.description }}</p>
-                <p>Дата создания: {{ task.createdAt }}</p>
-                <p>Дэдлайн: {{ task.deadline }}</p>
-                <p>Последнее редактирование: {{ task.lastChange }}</p>
-                <button class="edit-button" @click="startEditing(index, 'progressTasks')">Редактировать</button>
-                <button class="move-button" @click="moveToTesting(index)">Отправить в тестирование</button>
+                <p>Created At: {{ task.createdAt }}</p>
+                <p>Deadline: {{ task.deadline }}</p>
+                <p>Last Change: {{ task.lastChange }}</p>
+                <button class="edit-button" @click="startEditing(index, 'progressTasks')">Edit</button>
+                <button class="move-button" @click="moveToTesting(index)">Move to Testing</button>
             </div>
             <div v-else>
                 <form @submit.prevent="finishEditing(index)">
-                    <label for="editTitle">Заголовок задачи:</label>
+                    <label for="editTitle">Task Title:</label>
+                    <input id="editTitle2" type="text" v-model="editedTask.title">
+                    <label for="editDescription">Task Description:</label>
+                    <textarea id="editDescription2" v-model="editedTask.description"></textarea>
+                    <label for="editDeadline">Deadline:</label>
+                    <input id="editDeadline2" type="date" v-model="editedTask.deadline">
+                    <button type="submit">Save</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="column">
+        <h2>Testing</h2>
+        <div v-for="(task, index) in testingTasks" :key="index">
+            <div v-if="editedTaskIndex !== index || editedColumn !== 'testingTasks'">
+                <h3>{{ task.title }}</h3>
+                <p>{{ task.description }}</p>
+                <p>Created At: {{ task.createdAt }}</p>
+                <p>Deadline: {{ task.deadline }}</p>
+                <p>Last Change: {{ task.lastChange }}</p>
+                <button class="edit-button" @click="startEditing(index, 'testingTasks')">Edit</button>
+                <button class="move-button" @click="moveToCompleted(index)">Move to Completed</button>
+                <label for="rreturn"><br>Reason:</label>
+                <input class="return-reason-input" id="rreturn" type="text" v-model="task.rreturn">
+                <button class="move-button" @click="returnToInProgress(index)">Return to In Progress</button>
+
+            </div>
+            <div v-else>
+                <form @submit.prevent="finishEditing(index, 'testingTasks')">
+                    <label for="editTitle">Task Title:</label>
                     <input id="editTitle" type="text" v-model="editedTask.title">
-                    <label for="editDescription">Описание задачи:</label>
+                    <label for="editDescription">Task Description:</label>
                     <textarea id="editDescription" v-model="editedTask.description"></textarea>
-                    <label for="editDeadline">Дэдлайн:</label>
+                    <label for="editDeadline">Deadline:</label>
                     <input id="editDeadline" type="date" v-model="editedTask.deadline">
-                    <button type="submit">Сохранить</button>
+                    <button type="submit">Save</button>
                 </form>
             </div>
         </div>

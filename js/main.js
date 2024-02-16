@@ -1,6 +1,6 @@
 new Vue({
     el: '#app',
-    data(){
+    data() {
         return {
             newTask: {
                 title: '',
@@ -20,25 +20,25 @@ new Vue({
             editedColumn: null,
         }
     },
-    methods:{
+    methods: {
         addTask() {
             if (!this.newTask.title) {
-                alert('Необходимо указать заголовок задачи');
+                alert('Please specify the task title');
                 return;
             }
             if (!this.newTask.description) {
-                alert('Необходимо указать описание задачи');
+                alert('Please provide the task description');
                 return;
             }
             if (!this.newTask.deadline) {
-                alert('Необходимо указать дэдлайн (срок сдачи задачи)');
+                alert('Please specify the deadline for the task');
                 return;
             }
             if (new Date(this.newTask.deadline) <= new Date(new Date().setDate(new Date().getDate()))) {
-                alert('Недействительная дата дэдлайна (минимум должен быть - завтра)');
+                alert('Invalid deadline date (minimum should be tomorrow)');
                 return;
             }
-            this.plannedTasks.push({...this.newTask});
+            this.plannedTasks.push({ ...this.newTask });
             this.newTask = {
                 title: '',
                 description: '',
@@ -51,12 +51,12 @@ new Vue({
             this.plannedTasks.splice(taskIndex, 1);
         },
         startEditing(taskIndex, column) {
-            this.editedTask = {...this[column][taskIndex]};
+            this.editedTask = { ...this[column][taskIndex] };
             this.editedTaskIndex = taskIndex;
             this.editedColumn = column;
         },
         finishEditing(taskIndex) {
-            this[this.editedColumn][taskIndex] = {...this.editedTask, lastChange: new Date().toLocaleString()};
+            this[this.editedColumn][taskIndex] = { ...this.editedTask, lastChange: new Date().toLocaleString() };
             this.editedTask = null;
             this.editedTaskIndex = null;
             this.editedColumn = null;
@@ -69,6 +69,18 @@ new Vue({
             const taskToMove = this.progressTasks.splice(taskIndex, 1)[0];
             this.testingTasks.push(taskToMove);
         },
-
+        returnToInProgress(taskIndex) {
+            if (!this.testingTasks[taskIndex].rreturn) {
+                alert('Please specify the reason for return');
+                return;
+            }
+            const taskToMove = this.testingTasks.splice(taskIndex, 1)[0];
+            this.progressTasks.push(taskToMove);
+        },
+        moveToCompleted(taskIndex) {
+            const taskToMove = this.testingTasks.splice(taskIndex, 1)[0];
+            taskToMove.isOverdue = new Date(taskToMove.deadline) < new Date();
+            this.completedTasks.push(taskToMove);
+        }
     }
 })

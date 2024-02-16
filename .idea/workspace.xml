@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="09805162-1ba5-497d-9b4b-a845e1bd1093" name="Changes" comment="0.4">
+    <list default="true" id="09805162-1ba5-497d-9b4b-a845e1bd1093" name="Changes" comment="0.4 (косметика)">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/js/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/main.js" afterDir="false" />
@@ -66,7 +66,7 @@
       <workItem from="1708085421103" duration="779000" />
       <workItem from="1708086891212" duration="11000" />
       <workItem from="1708086903299" duration="2430000" />
-      <workItem from="1708093931771" duration="641000" />
+      <workItem from="1708093931771" duration="1276000" />
     </task>
     <task id="LOCAL-00001" summary="0.1">
       <option name="closed" value="true" />
@@ -108,7 +108,15 @@
       <option name="project" value="LOCAL" />
       <updated>1708094328693</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="0.4 (косметика)">
+      <option name="closed" value="true" />
+      <created>1708094707459</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1708094707459</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -131,6 +139,7 @@
     <MESSAGE value="0.2.1 (косметика)" />
     <MESSAGE value="0.3 (косметика)" />
     <MESSAGE value="0.4" />
-    <option name="LAST_COMMIT_MESSAGE" value="0.4" />
+    <MESSAGE value="0.4 (косметика)" />
+    <option name="LAST_COMMIT_MESSAGE" value="0.4 (косметика)" />
   </component>
 </project>
