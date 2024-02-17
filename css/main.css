@@ -66,3 +66,8 @@ input, textarea, select {
         margin-bottom: 1rem;
     }
 }
+
+.task{
+    padding: 5px;
+    border: thick double #09cd50;
+}

@@ -26,8 +26,8 @@
     </div>
     <div class="column">
         <h2>Planned Tasks</h2>
-        <div v-for="(task, index) in plannedTasks" :key="index">
-            <div v-if="editedTaskIndex !== index || editedColumn !== 'plannedTasks'">
+        <div class="task" v-for="(task, index) in plannedTasks" :key="index">
+            <div  v-if="editedTaskIndex !== index || editedColumn !== 'plannedTasks'">
                 <p>Created At: {{ task.createdAt }}</p>
                 <h3>{{ task.title }}</h3>
                 <p>{{ task.description }}</p>
@@ -52,7 +52,7 @@
     </div>
     <div class="column">
         <h2>Tasks in Progress</h2>
-        <div v-for="(task, index) in progressTasks" :key="index">
+        <div class="task" v-for="(task, index) in progressTasks" :key="index">
             <div v-if="editedTaskIndex !== index || editedColumn !== 'progressTasks'">
                 <p>Created At: {{ task.createdAt }}</p>
                 <h3>{{ task.title }}</h3>
@@ -77,7 +77,7 @@
     </div>
     <div class="column">
         <h2>Testing</h2>
-        <div v-for="(task, index) in testingTasks" :key="index">
+        <div class="task" v-for="(task, index) in testingTasks" :key="index">
             <div v-if="editedTaskIndex !== index || editedColumn !== 'testingTasks'">
                 <p>Created At: {{ task.createdAt }}</p>
                 <h3>{{ task.title }}</h3>
@@ -106,7 +106,7 @@
     </div>
     <div class="column">
         <h2>Completed Tasks</h2>
-        <div v-for="(task, index) in completedTasks" :key="index">
+        <div class="task" v-for="(task, index) in completedTasks" :key="index">
             <div v-if="editedTaskIndex !== index || editedColumn !== 'completedTasks'">
                 <h3>{{ task.title }}</h3>
                 <p>{{ task.description }}</p>
